@@ -46,7 +46,7 @@ install:
   - "%PYTHON%/Scripts/pip install Cython"
   - "%PYTHON%/Scripts/pip install py.test"
 
-build:
+build_script:
   - "nmake -f lib/primesieve/Makefile.msvc"
   - "%WITH_COMPILER% %PYTHON%/python setup.py install"
 
