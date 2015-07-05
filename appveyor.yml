@@ -44,7 +44,7 @@ init:
 install:
   - "powershell appveyor\\install.ps1"
   - "%PYTHON%/Scripts/pip install Cython"
-  - "%PYTHON%/Scripts/pip install py.test"
+  - "%PYTHON%/Scripts/pip install pytest"
 
 build_script:
   - "nmake -f lib/primesieve/Makefile.msvc"
