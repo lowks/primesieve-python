@@ -43,11 +43,15 @@ init:
 
 install:
   - "powershell appveyor\\install.ps1"
+  - "%PYTHON%/Scripts/pip install Cython"
+  - "%PYTHON%/Scripts/pip install py.test"
 
-build: off
+build:
+  - "nmake -f lib/primesieve/Makefile.msvc"
+  - "%WITH_COMPILER% %PYTHON%/python setup.py install"
 
 test_script:
-  - "%WITH_COMPILER% %PYTHON%/python setup.py test"
+  - "%WITH_COMPILER% %PYTHON%/Scripts/py.test"
 
 after_test:
   - "%WITH_COMPILER% %PYTHON%/python setup.py bdist_wheel"
